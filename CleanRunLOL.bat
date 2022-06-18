@@ -20,12 +20,6 @@ echo exit 2 >> %temp%\RunLOL.bat
 :: start LOL
 @start /b %temp%\RunLOL.bat > nul
 
-:: delay 1s avoid error
-@ping 127.0.0.1 -n 1 -w 1000 > nul
-
-:: del temp file
-del /q /f %temp%\temp.txt
-
 :: delay 3s avoid error
 @ping 127.0.0.1 -n 3 -w 1000 > nul
 
