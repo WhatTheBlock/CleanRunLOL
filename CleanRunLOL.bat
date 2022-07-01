@@ -11,8 +11,10 @@ wmic path win32_process get commandline | findstr "RiotClientServices.exe" > %te
 @taskkill /f /im Garena.exe > nul
 @taskkill /f /im LeagueClient.exe > nul
 
-:: disable Garena prelaunch task
-@schtasks /change /tn "gxx speed launcher" /disable > nul
+:: disabled Garena background services
+@schtasks /delete /tn "gxx speed launcher" /f > nul
+@sc stop "GarenaPlatform" > nul
+@sc config "GarenaPlatform" start= disabled > nul
 
 :: get the actual commandline
 findstr "RiotClientServices.exe" %temp%\temp.txt > %temp%\RunLOL.bat
